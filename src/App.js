@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "react-bootstrap/dist/react-bootstrap.min.js";
+import AddSpotForm from "./components/Spot/AddSpotForm/AddSpotForm";
+import SpotList from "./components/Spot/SpotList/SpotList";
+import Header from "./components/navbar/Navbar";
+import SpotDetails from "./components/Spot/SpotList/SpotDetails";
+import EditSpotForm from "./components/Spot/EditSpot/EditSpotForm";
+import AddReview from "./components/Reviews/AddReview";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route index element={<SpotList />} />
+        <Route path="/spots" element={<SpotList />} />
+        <Route path="/spots/:id" element={<SpotDetails />} />
+        <Route path="/addSpot" element={<AddSpotForm />} />
+        <Route path="/spots/:id/editSpot" element={<EditSpotForm />} />
+        <Route path="/addReview" element={<AddReview />}></Route>
+      </Routes>
+    </>
   );
 }
 

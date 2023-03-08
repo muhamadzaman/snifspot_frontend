@@ -1,0 +1,39 @@
+.add-spot-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.add-spot-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.add-spot-form input,
+.add-spot-form textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-top: 0.5rem;
+}
+
+.add-spot-form input[type="file"] {
+  margin-top: 0.5rem;
+}
+
+.add-spot-form button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.add-spot-form button:hover {
+  background-color: #3e8e41;
+}
