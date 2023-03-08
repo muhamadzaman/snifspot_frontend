@@ -92,7 +92,6 @@ const Feature = () => {
           </tr>
           <tbody
             style={{
-              // border: "2px solid",
               marginTop: "20px",
             }}
           >
