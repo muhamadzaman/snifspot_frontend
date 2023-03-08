@@ -1,0 +1,57 @@
+.comments .rev-head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 8px 15px 2rem;
+  white-space: pre-wrap;
+}
+.col-md-12 {
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  width: 100%;
+}
+.user-avatar,
+.user-avatar-sm {
+  display: inline-block;
+  height: 56px;
+  object-fit: cover;
+  object-position: center;
+  vertical-align: middle;
+  width: 56px;
+}
+
+.align-self-start {
+  align-self: flex-start !important;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.media-body {
+  display: inline-block;
+  padding-left: 16px;
+  vertical-align: middle;
+  width: calc(100% - 56px);
+}
+
+.media-body .user-name {
+  margin: 0 0 4px;
+}
+
+.media-body .comment-date {
+  align-items: center;
+  color: #787878;
+  display: flex;
+  margin: 0;
+}
+
+.review-user-info {
+  cursor: pointer;
+}
