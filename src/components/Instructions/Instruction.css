@@ -1,0 +1,52 @@
+.instruction_color {
+  background-color: #f1ffec;
+  margin-top: 100px;
+}
+.main {
+  padding: 80px 0 56px;
+  margin: 0 auto;
+  width: 75%;
+  font-family: "Work Sans",
+}
+
+.main h1 {
+  font-size: 36px !important;
+  font-weight: 600;
+}
+
+.instruction_main {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -24px;
+}
+
+.instruction_item {
+    display: flex;
+    padding: 24px;
+    width: 50%;
+}
+.instruction_item svg {
+  width: 50px;
+  margin-right: 16px;
+  margin-top: 5px;
+}
+
+.snif-p {
+  font-size: 16px !important;
+}
+.snif-m {
+  font-weight: 600;
+}
+
+.instruction_link {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #3aa648;
+}
+
+.parks_available_h {
+  margin-top: 120px;
+}
+.parks_available {
+  margin-top: 50px;
+}
