@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Form.css";
 
 const Form = ({
@@ -13,6 +14,7 @@ const Form = ({
   setPrice,
 }) => {
   const [imgs, setImgs] = useState(images);
+  const navigate = useNavigate();
 
   const imagesToBase64 = async (filesList) => {
     const files = filesList.map((file) => {
@@ -31,6 +33,7 @@ const Form = ({
   const handleClick = (index) => {
     setImages(images.filter((image, ind) => ind !== index));
     setImgs(imgs.filter((image, ind) => ind !== index));
+    navigate("/");
   };
 
   return (

@@ -43,7 +43,7 @@ const EditSpotForm = () => {
     }
 
     try {
-      const response = await spotApi.patch(`/spots/${id}`, formData);
+      const response = await spotApi.put(`/spots/${id}`, formData);
 
       setTitle("");
       setDescription("");

@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import Form from "./Form/Form";
 import spotApi from "../../api/spot";
 
-const AddReview = ({ id, setOpen, setCreated }) => {
-  const [rating, setRating] = useState(5);
-  const [comment, setComment] = useState("");
+const EditReview = ({ id, setOpen, rating: rt, comment: cm, setCreated }) => {
+  console.log("cm", cm, "rt", rt);
+  const [rating, setRating] = useState(rt);
+  const [comment, setComment] = useState(cm);
 
   const handleSubmit = async () => {
     try {
-      const response = await spotApi.post("/reviews", {
-        spot_id: id,
+      const response = await spotApi.put(`/reviews/${id}`, {
         rating,
         review_comment: comment,
       });
@@ -34,4 +34,4 @@ const AddReview = ({ id, setOpen, setCreated }) => {
   );
 };
 
-export default AddReview;
+export default EditReview;

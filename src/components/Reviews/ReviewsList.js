@@ -3,10 +3,20 @@ import "./ReviewsList.css";
 import RatingIcon from "../../Assets/Svgs/RatingIcon";
 import DateIcon from "../../Assets/Svgs/DateIcon";
 import LinkIcon from "../../Assets/Svgs/LinkIcon";
-import axios from "axios";
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
+import EditReview from "./EditReview";
+import { Button, Grid, Box, Modal } from "@mui/material";
 
-const ReviewsList = ({ reviews }) => {
-  console.log("--------------<", reviews);
+const ReviewsList = ({ reviews, setCreated }) => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => setOpen(false);
+
+  const editReview = () => {
+    setOpen(true);
+  };
+
   return (
     <div>
       <section id="reviews">
@@ -15,16 +25,20 @@ const ReviewsList = ({ reviews }) => {
             <h2 className="snif-m1 snif-semibold mt-2 mb-3">
               <div>
                 <RatingIcon style={{ marginRight: "10px" }} />
-                5.0
-                <span className="snif-medium"> (36 Reviews)</span>
+                {reviews.reduce((total, value) => (total += value.rating), 0) /
+                  reviews.length}
+
+                <span style={{ marginLeft: "10px" }} className="snif-medium">
+                  ({reviews?.length || 0} reviews)
+                </span>
               </div>
             </h2>
             <div className="snif-p snif-medium text-primary">
               See all reviews
             </div>
           </div>
-          {reviews.map((review, index) => (
-            <div>
+          {reviews?.map((review, index) => (
+            <div key={index}>
               <div className="row">
                 <div className="col-md-12">
                   <div className="review-user-info">
@@ -42,9 +56,35 @@ const ReviewsList = ({ reviews }) => {
                     </picture>
                     <div className="media-body">
                       <h5 className="user-name snif-p">Thu L.</h5>
-                      <div className="comment-date snif-s2">
-                        <DateIcon />
-                        <span>Mar 6, 2023</span>
+                      <div className="d-flex justify-content-between comment-date snif-s2">
+                        <div>
+                          <DateIcon />
+                          <span style={{ marginLeft: "10px" }}>
+                            {moment(review?.created_at).format("DD-MM-YYYY")}
+                          </span>
+                        </div>
+
+                        <div>
+                          <Grid item xs={12}>
+                            <Button onClick={editReview}>Edit</Button>
+                          </Grid>
+                          <Modal
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                          >
+                            <Box>
+                              <EditReview
+                                setOpen={setOpen}
+                                rating={review.rating}
+                                comment={review.review_comment}
+                                id={review.id}
+                                setCreated={setCreated}
+                              />
+                            </Box>
+                          </Modal>
+                        </div>
                       </div>
                     </div>
                     <div className="raiting rating-comment mt-2">
@@ -61,14 +101,7 @@ const ReviewsList = ({ reviews }) => {
               </div>
               <div className="row">
                 <div className="col-md-12 comment-content">
-                  <p className="snif-p mb-1 mt-1">
-                    It was nice and accommodating!
-                  </p>
-                  <div className="comment-action">
-                    <p className="upvotes mr-md-3 ">
-                      <LinkIcon />0
-                    </p>
-                  </div>
+                  <p className="snif-p mb-1 mt-1">{review?.review_comment}</p>
                 </div>
               </div>
             </div>

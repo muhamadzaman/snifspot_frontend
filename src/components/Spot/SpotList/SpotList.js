@@ -188,15 +188,16 @@ const SpotList = () => {
               nextIcon={directionButtons("Next")}
               prevIcon={directionButtons("Previous")}
             >
-              {spot.images.map((image, index) => (
-                <Carousel.Item key={index}>
-                  <img
-                    className="d-block w-100"
-                    src={image}
-                    alt={`Image ${index}`}
-                  />
-                </Carousel.Item>
-              ))}
+              {spot.images &&
+                spot.images.map((image, index) => (
+                  <Carousel.Item key={index}>
+                    <img
+                      className="d-block w-100"
+                      src={image}
+                      alt={`Image ${index}`}
+                    />
+                  </Carousel.Item>
+                ))}
             </Carousel>
             <div className="spot-info">
               <h6 style={{ color: "#323232" }}>{spot.title}</h6>

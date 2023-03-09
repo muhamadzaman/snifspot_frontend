@@ -25,6 +25,7 @@ const SpotDetails = () => {
   const [spot, setSpot] = useState({});
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(true);
+  const [created, setCreated] = useState(false);
 
   const handleClose = () => setOpen(false);
 
@@ -45,7 +46,7 @@ const SpotDetails = () => {
     };
 
     fetchSpots();
-  }, []);
+  }, [created]);
 
   const defaultProps = {
     center: {
@@ -233,55 +234,7 @@ const SpotDetails = () => {
               </div>
               <hr />
             </div>
-            <div>
-              <div className="location-head ">
-                <div className="snif-m1 snif-semibold mt-3 mb-3">Location</div>
-              </div>
-              <div className="map-container">
-                <div className="row">
-                  <div className="col-md-12 map">
-                    <div className="apple-map-container-ssr">
-                      <div style={{ width: "100%", height: "100%" }}>
-                        <div
-                          className="mk-map-view mk-disable-pinch-gestures"
-                          style={{ position: "relative" }}
-                        >
-                          <canvas
-                            width="1626"
-                            height="850"
-                            className="syrup-canvas"
-                            aria-hidden="true"
-                            style={{
-                              width: "813px",
-                              height: "425px",
-                              backgroundColor: "rgb(249, 245, 237)",
-                            }}
-                          ></canvas>
-                          <canvas
-                            className="rt-root"
-                            aria-hidden="true"
-                            width="1626"
-                            height="850"
-                            style={{ width: "813px", height: "425px" }}
-                          ></canvas>
-                          <div
-                            className="mk-map-node-element"
-                            style={{ width: "813px", height: "425px" }}
-                          >
-                            <div className="mk-annotation-container"></div>
-                            <div
-                              className="mk-controls-container"
-                              style={{ inset: "0px" }}
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="map-circle"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <h2 className="snif-m1 snif-semibold mt-3 mb-3">Description</h2>
             <div className="row">
               <div className="col-md-12 h4">
@@ -321,10 +274,10 @@ const SpotDetails = () => {
               </div>
             </div>
             <hr />
-            <ReviewsList reviews={reviews} />
+            <ReviewsList reviews={reviews} setCreated={setCreated} />
             <div>
               <Grid item xs={12}>
-                <Button onClick={addReview}>Add Attendees</Button>
+                <Button onClick={addReview}>Add Review</Button>
               </Grid>
               <Modal
                 open={open}
@@ -333,7 +286,11 @@ const SpotDetails = () => {
                 aria-describedby="modal-modal-description"
               >
                 <Box>
-                  <AddReview handleClose={handleClose} id={id}></AddReview>
+                  <AddReview
+                    setOpen={setOpen}
+                    id={id}
+                    setCreated={setCreated}
+                  />
                 </Box>
               </Modal>
             </div>
