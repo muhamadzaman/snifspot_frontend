@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Carousel from "react-bootstrap/Carousel";
-import { Link } from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
 import { useNavigate } from "react-router-dom";
 
 import "./SpotList.css";
@@ -25,7 +22,6 @@ const SpotList = () => {
     const fetchSpots = async () => {
       try {
         const response = await spotApi.get("/spots");
-        console.log(response);
         setSpots(response.data);
       } catch (error) {
         console.error(error);
@@ -66,6 +62,117 @@ const SpotList = () => {
 
   return (
     <div>
+      <div className="card-city">
+        <div className="seo-container">
+          <div className="d-flex spot-breadcrumbs">
+            <ol vocab="https://schema.org/" typeof="BreadcrumbList">
+              <li property="itemListElement" typeof="ListItem">
+                <a property="item" typeof="WebPage" id="/" href="/">
+                  <span property="name" className="spot-breadcrumbs__name link">
+                    Home
+                  </span>
+                </a>
+              </li>
+              <div className="spot-breadcrumbs__icon-right">
+                <svg
+                  width="12"
+                  height="20"
+                  viewBox="0 0 12 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.0005 19.9985C1.4885 19.9985 0.9765 19.8025 0.5865 19.4125C-0.1955 18.6305 -0.1955 17.3665 0.5865 16.5845L7.1965 9.97454L0.8365 3.38854C0.0705 2.59254 0.0924992 1.32654 0.886499 0.560545C1.6825 -0.205455 2.9485 -0.183456 3.7145 0.608544L11.4385 8.60854C12.1965 9.39454 12.1865 10.6405 11.4145 11.4125L3.4145 19.4125C3.0245 19.8025 2.5125 19.9985 2.0005 19.9985Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </div>
+              <li property="itemListElement" typeof="ListItem" className="">
+                <a
+                  property="item"
+                  typeof="WebPage"
+                  id="/listings"
+                  href="/listings"
+                >
+                  <span property="name" className="spot-breadcrumbs__name link">
+                    All dog parks
+                  </span>
+                </a>
+              </li>
+              <div className="spot-breadcrumbs__icon-right">
+                <svg
+                  width="12"
+                  height="20"
+                  viewBox="0 0 12 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.0005 19.9985C1.4885 19.9985 0.9765 19.8025 0.5865 19.4125C-0.1955 18.6305 -0.1955 17.3665 0.5865 16.5845L7.1965 9.97454L0.8365 3.38854C0.0705 2.59254 0.0924992 1.32654 0.886499 0.560545C1.6825 -0.205455 2.9485 -0.183456 3.7145 0.608544L11.4385 8.60854C12.1965 9.39454 12.1865 10.6405 11.4145 11.4125L3.4145 19.4125C3.0245 19.8025 2.5125 19.9985 2.0005 19.9985Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </div>
+              <li property="itemListElement" typeof="ListItem" className="">
+                <a
+                  property="item"
+                  typeof="WebPage"
+                  id="/listings/washington"
+                  href="/listings/washington"
+                >
+                  <span property="name" className="spot-breadcrumbs__name link">
+                    Washington
+                  </span>
+                </a>
+              </li>
+              <div className="spot-breadcrumbs__icon-right">
+                <svg
+                  width="12"
+                  height="20"
+                  viewBox="0 0 12 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.0005 19.9985C1.4885 19.9985 0.9765 19.8025 0.5865 19.4125C-0.1955 18.6305 -0.1955 17.3665 0.5865 16.5845L7.1965 9.97454L0.8365 3.38854C0.0705 2.59254 0.0924992 1.32654 0.886499 0.560545C1.6825 -0.205455 2.9485 -0.183456 3.7145 0.608544L11.4385 8.60854C12.1965 9.39454 12.1865 10.6405 11.4145 11.4125L3.4145 19.4125C3.0245 19.8025 2.5125 19.9985 2.0005 19.9985Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </div>
+              <li
+                property="itemListElement"
+                typeof="ListItem"
+                className="bc-spot-title-wrapper"
+              >
+                <span
+                  property="name"
+                  className="spot-breadcrumbs__name text-light bc-spot-title"
+                >
+                  Seattle
+                </span>
+              </li>
+            </ol>
+          </div>
+          <div>
+            <h1 className="seo-title">
+              Rent the best private dog parks hosted by locals in Seattle,
+              Washington
+            </h1>
+            <p className="seo-subtitle">
+              Sniffspot's private dog parks are the best way to exercise your
+              dog. We have the best variety and the best priced dog parks
+              anywhere!
+            </p>
+            <div className="text-center">
+              <a href="/">
+                <button className="sniff-button sniff-button_size_lg sniff-button_color_primary sniff-button_block_mobile mt-4">
+                  Explore spots in Seattle, WA
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="spot-list">
         {spots.map((spot) => (
           <div

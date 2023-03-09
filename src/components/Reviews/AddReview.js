@@ -4,8 +4,7 @@ import spotApi from "../../api/spot";
 
 const AddReview = ({ id, handleClose }) => {
   const [rating, setRating] = useState(5);
-  const [comment, setComment] = useState("cpmments here");
-  console.log("rating ere", rating);
+  const [comment, setComment] = useState("");
 
   const handleSubmit = async () => {
     try {

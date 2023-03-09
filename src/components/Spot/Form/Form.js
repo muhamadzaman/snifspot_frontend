@@ -15,7 +15,6 @@ const Form = ({
   const [imgs, setImgs] = useState(images);
 
   const imagesToBase64 = async (filesList) => {
-    console.log(filesList);
     const files = filesList.map((file) => {
       return new Promise((res, rej) => {
         let reader = new FileReader();
@@ -28,13 +27,14 @@ const Form = ({
     let arr = await Promise.all(files);
     setImgs([...imgs, ...arr]);
   };
+
   const handleClick = (index) => {
-    setImages(images.filter((image, ind) => ind != index));
-    setImgs(imgs.filter((image, ind) => ind != index));
+    setImages(images.filter((image, ind) => ind !== index));
+    setImgs(imgs.filter((image, ind) => ind !== index));
   };
-  console.log(images);
+
   return (
-    <form className="add-spot-form" onSubmit={handleSubmit}>
+    <form className="add-spot-form mt-5" onSubmit={handleSubmit}>
       <label>
         Title:
         <input

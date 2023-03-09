@@ -6,8 +6,6 @@ const Form = ({ onSubmit, rating, comment, setRating, setComment }) => {
     setRating(parseInt(event.target.value));
   };
 
-  console.log(rating);
-
   const handleCommentChange = (event) => {
     setComment(event.target.value);
   };
@@ -22,6 +20,7 @@ const Form = ({ onSubmit, rating, comment, setRating, setComment }) => {
   return (
     <form className="add-review-form-container" onSubmit={handleSubmit}>
       <h2>Add a review</h2>
+
       <div className="form-group">
         <label htmlFor="rating">Rating:</label>
         <select
@@ -42,11 +41,15 @@ const Form = ({ onSubmit, rating, comment, setRating, setComment }) => {
         <textarea
           id="comment"
           name="comment"
+          rows={10}
           value={comment}
           onChange={handleCommentChange}
         />
+
+        <button className="mt-5" type="submit">
+          Submit
+        </button>
       </div>
-      <button type="submit">Submit</button>
     </form>
   );
 };

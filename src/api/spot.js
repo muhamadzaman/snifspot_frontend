@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://717a18e056e0.eu.ngrok.io",
+  baseURL: "https://snifspot-backend-api.herokuapp.com",
 });
 
 instance.interceptors.request.use(
