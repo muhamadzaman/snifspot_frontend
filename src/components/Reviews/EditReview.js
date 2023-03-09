@@ -9,10 +9,18 @@ const EditReview = ({ id, setOpen, rating: rt, comment: cm, setCreated }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await spotApi.put(`/reviews/${id}`, {
-        rating,
-        review_comment: comment,
-      });
+      const response = await spotApi.put(
+        `/reviews/${id}`,
+        {
+          rating,
+          review_comment: comment,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       setRating(5);
       setComment("");
